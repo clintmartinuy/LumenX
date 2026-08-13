@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, useTransition } from "react";
+import { useEffect, useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -22,6 +22,13 @@ type Category = { id: string; name: string };
 type Customer = { id: string; full_name: string; phone: string | null; customer_type: "b2c" | "b2b" };
 type CartLine = SaleLineItemInput & { key: string; name: string };
 type StaffRole = "owner" | "admin" | "staff" | "viewer";
+type InitialBooking = {
+  id: string;
+  customerId: string | null;
+  customerName: string | null;
+  serviceIds: string[];
+  productIds: string[];
+};
 
 const PAYMENT_METHODS = ["cash", "gcash", "bank_transfer", "maya", "mixed"] as const;
 
@@ -30,11 +37,13 @@ export function PosTerminal({
   services,
   categories,
   role,
+  initialBooking,
 }: {
   products: Product[];
   services: Service[];
   categories: Category[];
   role: StaffRole;
+  initialBooking?: InitialBooking | null;
 }) {
   const router = useRouter();
   const [search, setSearch] = useState("");
@@ -42,6 +51,7 @@ export function PosTerminal({
   const [cart, setCart] = useState<CartLine[]>([]);
   const [tier, setTier] = useState<"retail" | "wholesale">("retail");
   const [customer, setCustomer] = useState<Customer | null>(null);
+  const [bookingId, setBookingId] = useState<string | null>(null);
   const [customerQuery, setCustomerQuery] = useState("");
   const [customerResults, setCustomerResults] = useState<Customer[]>([]);
   const [discountPesos, setDiscountPesos] = useState("0");
@@ -55,6 +65,29 @@ export function PosTerminal({
 
   const canWholesale = role === "owner" || role === "admin";
   const canOverride = role === "owner" || role === "admin";
+
+  useEffect(() => {
+    if (!initialBooking) return;
+
+    setBookingId(initialBooking.id);
+    if (initialBooking.customerId && initialBooking.customerName) {
+      setCustomer({ id: initialBooking.customerId, full_name: initialBooking.customerName, phone: null, customer_type: "b2c" });
+    }
+
+    const serviceLines: CartLine[] = initialBooking.serviceIds
+      .map((id) => services.find((s) => s.id === id))
+      .filter((s): s is Service => Boolean(s))
+      .map((s) => ({ key: `s-${s.id}`, itemType: "service", serviceId: s.id, name: s.name, quantity: 1, unitPrice: s.base_price, lineDiscount: 0 }));
+
+    const productLines: CartLine[] = initialBooking.productIds
+      .map((id) => products.find((p) => p.id === id))
+      .filter((p): p is Product => Boolean(p))
+      .map((p) => ({ key: `p-${p.id}`, itemType: "product", productId: p.id, name: p.name, quantity: 1, unitPrice: p.retail_price, lineDiscount: 0 }));
+
+    setCart([...serviceLines, ...productLines]);
+    // Only ever applies the booking prefill once, on mount.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const filteredProducts = products.filter((p) => {
     if (categoryId && p.category_id !== categoryId) return false;
@@ -152,6 +185,7 @@ export function PosTerminal({
         paymentMethod,
         paymentReference: paymentReference || undefined,
         amountPaid: Math.min(amountPaid, total) || total,
+        bookingId: bookingId ?? undefined,
         overrideOversell: oversoldLines.length > 0,
         overrideReason: oversoldLines.length > 0 ? "POS override by " + role : undefined,
       });
@@ -164,6 +198,7 @@ export function PosTerminal({
       setReceipt({ saleNumber: result.saleNumber });
       setCart([]);
       setCustomer(null);
+      setBookingId(null);
       setDiscountPesos("0");
       setDiscountReason("");
       setAmountTenderedPesos("");
