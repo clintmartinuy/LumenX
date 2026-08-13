@@ -53,8 +53,9 @@ export function PartnerTransactionDialog({ partners, type }: { partners: Partner
         </DialogHeader>
         <div className="space-y-4">
           <div className="space-y-1">
-            <Label>Partner</Label>
+            <Label htmlFor="txnPartner">Partner</Label>
             <select
+              id="txnPartner"
               className="border-input bg-background h-8 w-full rounded-md border px-2 text-sm"
               value={partnerId}
               onChange={(e) => setPartnerId(e.target.value)}
@@ -67,16 +68,16 @@ export function PartnerTransactionDialog({ partners, type }: { partners: Partner
             </select>
           </div>
           <div className="space-y-1">
-            <Label>Amount (PHP)</Label>
-            <Input value={amountPesos} onChange={(e) => setAmountPesos(e.target.value)} />
+            <Label htmlFor="txnAmount">Amount (PHP)</Label>
+            <Input id="txnAmount" value={amountPesos} onChange={(e) => setAmountPesos(e.target.value)} />
           </div>
           <div className="space-y-1">
-            <Label>Method</Label>
-            <Input value={method} onChange={(e) => setMethod(e.target.value)} />
+            <Label htmlFor="txnMethod">Method</Label>
+            <Input id="txnMethod" value={method} onChange={(e) => setMethod(e.target.value)} />
           </div>
           <div className="space-y-1">
-            <Label>Reference (optional)</Label>
-            <Input value={reference} onChange={(e) => setReference(e.target.value)} />
+            <Label htmlFor="txnReference">Reference (optional)</Label>
+            <Input id="txnReference" value={reference} onChange={(e) => setReference(e.target.value)} />
           </div>
           {error ? <p className="text-destructive text-sm">{error}</p> : null}
         </div>

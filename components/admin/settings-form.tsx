@@ -49,22 +49,22 @@ export function SettingsForm({ settings }: { settings: Settings }) {
   return (
     <div className="max-w-lg space-y-4">
       <div className="space-y-2">
-        <Label>Business name</Label>
-        <Input value={businessName} onChange={(e) => setBusinessName(e.target.value)} />
+        <Label htmlFor="businessName">Business name</Label>
+        <Input id="businessName" value={businessName} onChange={(e) => setBusinessName(e.target.value)} />
       </div>
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-2">
-          <Label>Phone</Label>
-          <Input value={phone} onChange={(e) => setPhone(e.target.value)} />
+          <Label htmlFor="settingsPhone">Phone</Label>
+          <Input id="settingsPhone" value={phone} onChange={(e) => setPhone(e.target.value)} />
         </div>
         <div className="space-y-2">
-          <Label>Email</Label>
-          <Input value={email} onChange={(e) => setEmail(e.target.value)} />
+          <Label htmlFor="settingsEmail">Email</Label>
+          <Input id="settingsEmail" value={email} onChange={(e) => setEmail(e.target.value)} />
         </div>
       </div>
       <div className="space-y-2">
-        <Label>Address</Label>
-        <Input value={address} onChange={(e) => setAddress(e.target.value)} />
+        <Label htmlFor="settingsAddress">Address</Label>
+        <Input id="settingsAddress" value={address} onChange={(e) => setAddress(e.target.value)} />
       </div>
       <label className="flex items-center gap-2 text-sm">
         <input type="checkbox" checked={autoreplyEnabled} onChange={(e) => setAutoreplyEnabled(e.target.checked)} />

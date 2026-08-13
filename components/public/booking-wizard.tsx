@@ -215,20 +215,20 @@ export function BookingWizard({
           <h2 className="font-heading text-lg font-bold">Your vehicle</h2>
           <div className="grid grid-cols-2 gap-3">
             <div className="space-y-1">
-              <Label>Make</Label>
-              <Input value={vehicleMake} onChange={(e) => setVehicleMake(e.target.value)} />
+              <Label htmlFor="vehicleMake">Make</Label>
+              <Input id="vehicleMake" value={vehicleMake} onChange={(e) => setVehicleMake(e.target.value)} />
             </div>
             <div className="space-y-1">
-              <Label>Model</Label>
-              <Input value={vehicleModel} onChange={(e) => setVehicleModel(e.target.value)} />
+              <Label htmlFor="vehicleModel">Model</Label>
+              <Input id="vehicleModel" value={vehicleModel} onChange={(e) => setVehicleModel(e.target.value)} />
             </div>
             <div className="space-y-1">
-              <Label>Year</Label>
-              <Input type="number" value={vehicleYear} onChange={(e) => setVehicleYear(e.target.value)} />
+              <Label htmlFor="vehicleYear">Year</Label>
+              <Input id="vehicleYear" type="number" value={vehicleYear} onChange={(e) => setVehicleYear(e.target.value)} />
             </div>
             <div className="space-y-1">
-              <Label>Plate (optional)</Label>
-              <Input value={plateNumber} onChange={(e) => setPlateNumber(e.target.value)} />
+              <Label htmlFor="plateNumber">Plate (optional)</Label>
+              <Input id="plateNumber" value={plateNumber} onChange={(e) => setPlateNumber(e.target.value)} />
             </div>
           </div>
         </div>
@@ -280,20 +280,20 @@ export function BookingWizard({
         <div className="space-y-4">
           <h2 className="font-heading text-lg font-bold">Contact &amp; confirm</h2>
           <div className="space-y-1">
-            <Label>Name</Label>
-            <Input value={fullName} onChange={(e) => setFullName(e.target.value)} />
+            <Label htmlFor="fullName">Name</Label>
+            <Input id="fullName" value={fullName} onChange={(e) => setFullName(e.target.value)} />
           </div>
           <div className="space-y-1">
-            <Label>Phone</Label>
-            <Input placeholder="09XXXXXXXXX" value={phone} onChange={(e) => setPhone(e.target.value)} />
+            <Label htmlFor="bookingPhone">Phone</Label>
+            <Input id="bookingPhone" placeholder="09XXXXXXXXX" value={phone} onChange={(e) => setPhone(e.target.value)} />
           </div>
           <div className="space-y-1">
-            <Label>Email (optional)</Label>
-            <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <Label htmlFor="bookingEmail">Email (optional)</Label>
+            <Input id="bookingEmail" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
           <div className="space-y-1">
-            <Label>Notes (optional)</Label>
-            <Input value={notes} onChange={(e) => setNotes(e.target.value)} />
+            <Label htmlFor="bookingNotes">Notes (optional)</Label>
+            <Input id="bookingNotes" value={notes} onChange={(e) => setNotes(e.target.value)} />
           </div>
           <div className="bg-card rounded-xl border p-4 text-sm">
             <p className="font-heading text-xl font-bold">{formatCentavos(centavos(estimatedTotal))}</p>
