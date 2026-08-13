@@ -5,6 +5,7 @@ import { checkRateLimit } from "@/lib/rate-limit";
 import { inquirySchema, type InquiryInput } from "@/lib/validation/inquiry";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createInquiry, findOrCreateCustomer } from "@/lib/inquiries/service";
+import { getAutoReply } from "@/lib/autoreply/responder";
 
 export async function submitContactForm(
   input: InquiryInput,
@@ -51,8 +52,18 @@ export async function submitContactForm(
     status: isSpam ? "spam" : "new",
   });
 
-  // TODO(Phase 6): run the message through the auto-reply matcher once
-  // lib/autoreply/matcher.ts exists, and update status/first_response_at accordingly.
+  if (!isSpam) {
+    const reply = await getAutoReply(inquiry.id, parsed.data.message, "website_form");
+    if (reply.sent && reply.body) {
+      const supabase = createAdminClient();
+      await supabase.from("inquiry_messages").insert({
+        inquiry_id: inquiry.id,
+        direction: "outbound",
+        sender_type: "bot",
+        body: reply.body,
+      });
+    }
+  }
 
   return { success: true, reference: inquiry.reference };
 }
