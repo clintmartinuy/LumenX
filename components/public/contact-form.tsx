@@ -114,7 +114,7 @@ export function ContactForm({
         </p>
       ) : null}
 
-      <Button type="submit" disabled={isPending}>
+      <Button type="submit" className="rounded-full font-semibold" disabled={isPending}>
         {isPending ? "Sending..." : "Send Inquiry"}
       </Button>
     </form>

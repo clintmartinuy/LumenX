@@ -52,13 +52,13 @@ export default async function FaqPage() {
   ];
 
   return (
-    <main className="mx-auto max-w-3xl px-4 py-8">
-      <h1 className="mb-6 text-xl font-semibold">Frequently Asked Questions</h1>
+    <main className="mx-auto max-w-3xl px-4 py-12 sm:py-16">
+      <h1 className="font-heading mb-8 text-3xl font-bold tracking-tight">Frequently Asked Questions</h1>
       <div className="divide-border/60 divide-y">
         {faqs.map((item) => (
-          <div key={item.q} className="py-4">
-            <p className="font-medium">{item.q}</p>
-            <p className="text-muted-foreground mt-1 text-sm">{item.a}</p>
+          <div key={item.q} className="py-5">
+            <p className="font-semibold">{item.q}</p>
+            <p className="text-muted-foreground mt-1.5 text-sm leading-relaxed">{item.a}</p>
           </div>
         ))}
       </div>

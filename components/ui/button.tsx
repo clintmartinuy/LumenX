@@ -44,11 +44,16 @@ function Button({
   className,
   variant = "default",
   size = "default",
+  nativeButton,
   ...props
 }: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
+  // `render` is only ever used here to swap in a Link/anchor for navigation — never
+  // another native button — so default nativeButton to false in that case so Base UI
+  // adjusts its ARIA/keyboard handling instead of assuming real button semantics.
   return (
     <ButtonPrimitive
       data-slot="button"
+      nativeButton={nativeButton ?? !props.render}
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
     />

@@ -3,29 +3,28 @@ import Link from "next/link";
 export function SiteFooter() {
   return (
     <footer className="border-border/60 border-t">
-      <div className="text-muted-foreground mx-auto max-w-6xl space-y-2 px-4 py-8 text-sm">
-        <p className="text-foreground font-medium">LumenX PH</p>
-        <p>123 EDSA, Quezon City, Metro Manila</p>
-        <p>Mon-Fri 9:00-18:00, Sat 9:00-15:00, Sun closed</p>
-        <p>
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:py-16">
+        <p className="font-heading text-foreground text-lg font-bold">LumenX PH</p>
+        <div className="text-muted-foreground mt-4 grid grid-cols-1 gap-2 text-sm sm:grid-cols-3">
+          <p>123 EDSA, Quezon City, Metro Manila</p>
+          <p>Mon-Fri 9:00-18:00, Sat 9:00-15:00</p>
           <a
             href="https://www.facebook.com/LumenxPH"
             target="_blank"
             rel="noreferrer"
-            className="hover:text-foreground underline underline-offset-4"
+            className="hover:text-foreground underline-offset-4 hover:underline"
           >
             facebook.com/LumenxPH
           </a>
-        </p>
-        <p className="pt-4 text-xs">
-          <Link href="/faq" className="hover:text-foreground underline underline-offset-4">
+        </div>
+        <div className="text-muted-foreground mt-8 flex gap-4 border-t pt-6 text-xs">
+          <Link href="/faq" className="hover:text-foreground">
             FAQ
           </Link>
-          {" · "}
-          <Link href="/contact" className="hover:text-foreground underline underline-offset-4">
+          <Link href="/contact" className="hover:text-foreground">
             Contact
           </Link>
-        </p>
+        </div>
       </div>
     </footer>
   );

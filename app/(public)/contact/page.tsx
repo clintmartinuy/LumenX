@@ -17,9 +17,9 @@ export default async function ContactPage({
   const customerType = params.customer_type === "b2b" ? "b2b" : undefined;
 
   return (
-    <main className="mx-auto max-w-lg px-4 py-8">
-      <h1 className="mb-1 text-xl font-semibold">Contact Us</h1>
-      <p className="text-muted-foreground mb-6 text-sm">
+    <main className="mx-auto max-w-lg px-4 py-12 sm:py-16">
+      <h1 className="font-heading text-3xl font-bold tracking-tight">Contact Us</h1>
+      <p className="text-muted-foreground mt-2 mb-8 text-sm">
         Every inquiry lands in our inbox — we typically reply within a few hours during
         business hours.
       </p>

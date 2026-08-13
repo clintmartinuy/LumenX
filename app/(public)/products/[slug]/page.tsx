@@ -101,13 +101,13 @@ export default async function ProductDetailPage({
 
         <div className="space-y-4">
           <div className="flex items-start justify-between gap-2">
-            <h1 className="text-xl font-semibold">{product.name}</h1>
+            <h1 className="font-heading text-2xl font-bold tracking-tight">{product.name}</h1>
             <StockBadge status={product.stockStatus} />
           </div>
           <p className="font-mono text-xs text-muted-foreground">{product.sku}</p>
 
           <div>
-            <p className="text-2xl font-semibold">{formatCentavos(centavos(product.retail_price))}</p>
+            <p className="font-heading text-3xl font-bold">{formatCentavos(centavos(product.retail_price))}</p>
             {product.install_fee > 0 ? (
               <p className="text-muted-foreground text-sm">
                 + {formatCentavos(centavos(product.install_fee))} installation
@@ -125,7 +125,7 @@ export default async function ProductDetailPage({
             Warranty: {product.warranty_months} months
           </p>
 
-          <div className="rounded-md border p-3 text-xs">
+          <div className="bg-card rounded-xl border p-3 text-xs">
             <p className="font-medium">Wholesale pricing available — inquire</p>
             <Link
               href={`/contact?customer_type=b2b&product=${product.sku}`}
@@ -152,17 +152,19 @@ export default async function ProductDetailPage({
           )}
 
           <div className="flex flex-wrap gap-2 pt-2">
-            <Button render={<Link href={`/book?product=${product.sku}`} />}>
+            <Button className="rounded-full font-semibold" render={<Link href={`/book?product=${product.sku}`} />}>
               Book Installation with This
             </Button>
             <Button
               variant="outline"
+              className="rounded-full font-semibold"
               render={<Link href={`/contact?product=${product.sku}&subject=${encodeURIComponent(product.name)}`} />}
             >
               Ask About This
             </Button>
             <Button
               variant="outline"
+              className="rounded-full font-semibold"
               render={<a href="https://www.facebook.com/LumenxPH" target="_blank" rel="noreferrer" />}
             >
               Message on Facebook

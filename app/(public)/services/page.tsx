@@ -15,24 +15,24 @@ export default async function ServicesPage() {
   const services = await getActiveServices();
 
   return (
-    <main className="mx-auto max-w-4xl px-4 py-8">
-      <h1 className="mb-1 text-xl font-semibold">Installation Services</h1>
-      <p className="text-muted-foreground mb-6 text-sm">
+    <main className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
+      <h1 className="font-heading text-3xl font-bold tracking-tight">Installation Services</h1>
+      <p className="text-muted-foreground mt-2 mb-8 text-sm">
         Every service below is performed in-shop. Prices are starting rates — final quotes
         depend on vehicle and setup.
       </p>
 
-      <div className="divide-border/60 divide-y rounded-lg border">
+      <div className="divide-border/60 bg-card divide-y rounded-2xl border">
         {(services ?? []).map((service) => (
-          <div key={service.slug as string} className="flex items-center justify-between gap-4 p-4">
+          <div key={service.slug as string} className="flex items-center justify-between gap-4 p-5">
             <div>
-              <p className="font-medium">{service.name}</p>
+              <p className="font-semibold">{service.name}</p>
               {service.description ? (
-                <p className="text-muted-foreground text-sm">{service.description}</p>
+                <p className="text-muted-foreground mt-0.5 text-sm">{service.description}</p>
               ) : null}
               <p className="text-muted-foreground text-xs">{service.duration_minutes} min</p>
             </div>
-            <p className="font-semibold whitespace-nowrap">
+            <p className="font-heading text-lg font-bold whitespace-nowrap">
               {formatCentavos(centavos(service.base_price as number))}
             </p>
           </div>
@@ -40,7 +40,9 @@ export default async function ServicesPage() {
       </div>
 
       <div className="mt-8">
-        <Button render={<Link href="/book" />}>Book Installation</Button>
+        <Button className="rounded-full font-semibold" render={<Link href="/book" />}>
+          Book Installation
+        </Button>
       </div>
     </main>
   );
