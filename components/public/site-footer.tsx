@@ -6,8 +6,8 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl px-4 py-12 sm:py-16">
         <p className="font-heading text-foreground text-lg font-bold">LumenX PH</p>
         <div className="text-muted-foreground mt-4 grid grid-cols-1 gap-2 text-sm sm:grid-cols-3">
-          <p>123 EDSA, Quezon City, Metro Manila</p>
-          <p>Mon-Fri 9:00-18:00, Sat 9:00-15:00</p>
+          <p>Dagupan City, Urdaneta City & Metro Manila</p>
+          <p>Ships nationwide · 0923 523 1726</p>
           <a
             href="https://www.facebook.com/LumenxPH"
             target="_blank"

@@ -19,7 +19,7 @@ export default async function SaleDetailPage({ params }: { params: Promise<{ id:
 
       <div className="space-y-1 rounded-md border p-4 text-sm">
         <p className="font-semibold">LumenX PH</p>
-        <p className="text-muted-foreground text-xs">123 EDSA, Quezon City, Metro Manila</p>
+        <p className="text-muted-foreground text-xs">Dagupan City, Urdaneta City & Metro Manila</p>
         <p className="text-muted-foreground text-xs">
           {new Date(sale.sale_date as string).toLocaleString("en-PH")}
         </p>

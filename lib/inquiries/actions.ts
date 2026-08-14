@@ -29,6 +29,7 @@ export async function submitContactForm(
     phone: parsed.data.phone,
     email: parsed.data.email || undefined,
     customerType: parsed.data.customerType,
+    businessName: parsed.data.businessName || undefined,
     source: "website_form",
   });
 

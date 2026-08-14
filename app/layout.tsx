@@ -36,17 +36,12 @@ const localBusinessJsonLd = {
   url: SITE_URL,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "123 EDSA",
-    addressLocality: "Quezon City",
-    addressRegion: "Metro Manila",
+    addressRegion: "Dagupan City, Urdaneta City & Metro Manila",
     addressCountry: "PH",
   },
-  telephone: "+63 917 000 1234",
+  areaServed: "PH",
+  telephone: "+63 923 523 1726",
   sameAs: ["https://www.facebook.com/LumenxPH"],
-  openingHoursSpecification: [
-    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "09:00", closes: "18:00" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "09:00", closes: "15:00" },
-  ],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

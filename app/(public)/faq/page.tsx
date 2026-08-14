@@ -23,11 +23,11 @@ export default async function FaqPage() {
   const faqs = [
     {
       q: "How much do your products cost?",
-      a: "Fog light kits start around PHP 2,200 and headlight retrofits start around PHP 3,200. Check individual product pages for exact pricing, or message us for a full price list.",
+      a: "Fog light kits are PHP 10,000-11,500 depending on size and color, and brackets/modules are PHP 500 each. Check individual product pages for exact pricing.",
     },
     {
       q: "Do you install everything you sell?",
-      a: "Yes — every product we sell, we install in-shop. Installation fees range from PHP 250 (diagnostic check) to PHP 1,500 (full headlight retrofit).",
+      a: "Yes — every product we sell, we install. Message us or book online for installation.",
     },
     {
       q: "Will a product fit my vehicle?",
@@ -35,11 +35,11 @@ export default async function FaqPage() {
     },
     {
       q: "Where are you located, and what are your hours?",
-      a: `We're at ${settings?.address ?? "123 EDSA, Quezon City, Metro Manila"}. Hours: Monday-Friday 9:00-18:00, Saturday 9:00-15:00, closed Sunday.`,
+      a: `We're based in ${settings?.address ?? "Dagupan City, Urdaneta City & Metro Manila"}, and we ship nationwide. Message us to confirm hours before visiting.`,
     },
     {
       q: "What's your warranty policy?",
-      a: "All products carry a warranty of 6-12 months depending on the item, covering parts and workmanship. Message us with your receipt or sale number to start a claim.",
+      a: "Products carry a warranty of 3-6 months depending on the item, covering parts and workmanship. Message us with your receipt or sale number to start a claim.",
     },
     {
       q: "Do you offer wholesale/dealer pricing?",

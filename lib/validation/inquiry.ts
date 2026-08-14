@@ -7,6 +7,7 @@ export const inquirySchema = z.object({
   phone: z.string().regex(PH_MOBILE, "Enter a valid PH mobile number (09XXXXXXXXX)"),
   email: z.union([z.string().email(), z.literal("")]).optional(),
   customerType: z.enum(["b2c", "b2b"]),
+  businessName: z.string().optional(),
   subject: z.string().optional(),
   message: z.string().min(1, "Message is required"),
   productSku: z.string().optional(),

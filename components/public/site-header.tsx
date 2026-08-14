@@ -26,8 +26,8 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
-        <Button size="sm" className="rounded-full px-4 font-semibold" render={<Link href="/book" />}>
-          Book Installation
+        <Button size="sm" className="rounded-full px-4 font-semibold" render={<Link href="/order" />}>
+          Order Now
         </Button>
       </div>
     </header>

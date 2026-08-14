@@ -23,6 +23,7 @@ export function ContactForm({
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm<InquiryInput>({
     resolver: zodResolver(inquirySchema),
@@ -32,6 +33,7 @@ export function ContactForm({
       productSku: defaultProductSku ?? "",
     },
   });
+  const customerType = watch("customerType");
 
   const onSubmit = (data: InquiryInput) => {
     setResult(null);
@@ -92,16 +94,24 @@ export function ContactForm({
         </select>
       </div>
 
+      {customerType === "b2b" ? (
+        <div className="space-y-2">
+          <Label htmlFor="businessName">Business name</Label>
+          <Input id="businessName" {...register("businessName")} />
+        </div>
+      ) : null}
+
       <div className="space-y-2">
         <Label htmlFor="subject">Subject (optional)</Label>
         <Input id="subject" {...register("subject")} />
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="message">Message</Label>
+        <Label htmlFor="message">{customerType === "b2b" ? "Products & quantities needed" : "Message"}</Label>
         <textarea
           id="message"
           rows={4}
+          placeholder={customerType === "b2b" ? "e.g. 2\" White Foglights x20, 3\" Tri-Color x10..." : undefined}
           className="border-input bg-background w-full rounded-md border px-3 py-2 text-sm"
           {...register("message")}
         />

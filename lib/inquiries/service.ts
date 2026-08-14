@@ -7,6 +7,7 @@ type FindOrCreateCustomerInput = {
   phone?: string;
   email?: string;
   customerType?: "b2c" | "b2b";
+  businessName?: string;
   facebookPsid?: string;
   source: ContactSource;
 };
@@ -36,6 +37,7 @@ export async function findOrCreateCustomer(input: FindOrCreateCustomerInput): Pr
       phone: input.phone ?? null,
       email: input.email ?? null,
       customer_type: input.customerType ?? "b2c",
+      business_name: input.businessName ?? null,
       facebook_psid: input.facebookPsid ?? null,
       first_contact_source: input.source,
     })

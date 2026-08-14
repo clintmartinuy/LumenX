@@ -40,8 +40,8 @@ export default async function ServicesPage() {
       </div>
 
       <div className="mt-8">
-        <Button className="rounded-full font-semibold" render={<Link href="/book" />}>
-          Book Installation
+        <Button className="rounded-full font-semibold" render={<Link href="/order" />}>
+          Order Now
         </Button>
       </div>
     </main>

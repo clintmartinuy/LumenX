@@ -9,21 +9,21 @@ export const revalidate = 60;
 export const metadata: Metadata = {
   title: "LumenX PH — High-Wattage Automotive Lighting",
   description:
-    "Projector fog lights, headlight retrofits, and light bars — sold and professionally installed in Metro Manila.",
+    "Fog lights, brackets, and lighting accessories — based in Dagupan City, Urdaneta City & Metro Manila, shipping nationwide.",
 };
 
 const TRUST_ITEMS = [
   {
     title: "Warranty on every install",
-    body: "6-12 months depending on the product, covering parts and workmanship.",
+    body: "3-6 months depending on the product, covering parts and workmanship.",
   },
   {
     title: "Installation included",
     body: "Every product we sell, we install — no separate shop needed.",
   },
   {
-    title: "Metro Manila shop",
-    body: "123 EDSA, Quezon City. Open six days a week.",
+    title: "Nationwide shipping",
+    body: "Based in Dagupan City, Urdaneta City & Metro Manila — we ship anywhere in the Philippines.",
   },
 ];
 
@@ -40,7 +40,7 @@ export default async function HomePage() {
         />
         <div className="mx-auto max-w-6xl px-4 pt-20 pb-16 sm:pt-28 sm:pb-24">
           <p className="text-primary mb-4 text-xs font-semibold tracking-[0.2em] uppercase">
-            Metro Manila · Sales &amp; Installation
+            Dagupan · Urdaneta · Metro Manila · Ships Nationwide
           </p>
           <h1 className="font-heading max-w-3xl text-5xl leading-[0.98] font-bold tracking-tight text-balance sm:text-7xl">
             High-wattage lighting.
@@ -48,12 +48,12 @@ export default async function HomePage() {
             <span className="text-primary">Professionally installed.</span>
           </h1>
           <p className="text-muted-foreground mt-6 max-w-lg text-base sm:text-lg">
-            Projector fog lights, headlight retrofits, and light bars for cars and
-            motorcycles — sold and installed by LumenX PH.
+            Fog lights, mounting brackets, and lighting accessories for cars — sold and
+            installed by LumenX PH, shipped nationwide.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-3">
-            <Button size="lg" className="rounded-full px-6 text-base font-semibold" render={<Link href="/book" />}>
-              Book Installation
+            <Button size="lg" className="rounded-full px-6 text-base font-semibold" render={<Link href="/order" />}>
+              Order Now
             </Button>
             <Button
               size="lg"

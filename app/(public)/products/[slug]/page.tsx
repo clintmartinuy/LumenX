@@ -152,8 +152,8 @@ export default async function ProductDetailPage({
           )}
 
           <div className="flex flex-wrap gap-2 pt-2">
-            <Button className="rounded-full font-semibold" render={<Link href={`/book?product=${product.sku}`} />}>
-              Book Installation with This
+            <Button className="rounded-full font-semibold" render={<Link href={`/order?product=${product.sku}`} />}>
+              Order This
             </Button>
             <Button
               variant="outline"
