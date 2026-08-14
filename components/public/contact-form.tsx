@@ -19,7 +19,7 @@ export function ContactForm({
   defaultCustomerType?: "b2c" | "b2b";
 }) {
   const [isPending, startTransition] = useTransition();
-  const [result, setResult] = useState<{ ok: boolean; message: string } | null>(null);
+  const [result, setResult] = useState<{ ok: boolean; message: string; botReply?: string } | null>(null);
   const {
     register,
     handleSubmit,
@@ -45,13 +45,24 @@ export function ContactForm({
         setResult({
           ok: true,
           message: `Thanks! Your inquiry (${response.reference}) has been sent — we'll get back to you shortly.`,
+          botReply: response.botReply,
         });
       }
     });
   };
 
   if (result?.ok) {
-    return <p className="rounded-md border p-4 text-sm">{result.message}</p>;
+    return (
+      <div className="space-y-3">
+        <p className="rounded-md border p-4 text-sm">{result.message}</p>
+        {result.botReply ? (
+          <div className="bg-secondary/50 rounded-md border p-4 text-sm">
+            <p className="text-muted-foreground mb-1 text-xs font-medium">Quick answer</p>
+            <p>{result.botReply}</p>
+          </div>
+        ) : null}
+      </div>
+    );
   }
 
   return (

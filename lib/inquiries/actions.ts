@@ -9,7 +9,7 @@ import { getAutoReply } from "@/lib/autoreply/responder";
 
 export async function submitContactForm(
   input: InquiryInput,
-): Promise<{ error: string } | { success: true; reference: string }> {
+): Promise<{ error: string } | { success: true; reference: string; botReply?: string }> {
   const headersList = await headers();
   const ip = headersList.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
 
@@ -53,6 +53,7 @@ export async function submitContactForm(
     status: isSpam ? "spam" : "new",
   });
 
+  let botReply: string | undefined;
   if (!isSpam) {
     const reply = await getAutoReply(inquiry.id, parsed.data.message, "website_form");
     if (reply.sent && reply.body) {
@@ -63,8 +64,9 @@ export async function submitContactForm(
         sender_type: "bot",
         body: reply.body,
       });
+      botReply = reply.body;
     }
   }
 
-  return { success: true, reference: inquiry.reference };
+  return { success: true, reference: inquiry.reference, botReply };
 }
